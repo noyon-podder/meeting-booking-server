@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import { Student, Guardian, LocalGuardian } from './user.interface'
+import { IStudent, Guardian, LocalGuardian } from './user.interface'
 
 const guardianSchema = new mongoose.Schema<Guardian>({
   fathersName: {
@@ -47,7 +47,7 @@ const localGuardianSchema = new mongoose.Schema<LocalGuardian>({
   },
 })
 
-const studentSchema = new mongoose.Schema<Student>(
+const studentSchema = new mongoose.Schema<IStudent>(
   {
     id: { type: String },
     name: {
@@ -84,4 +84,4 @@ const studentSchema = new mongoose.Schema<Student>(
   { timestamps: true },
 )
 
-const Student = mongoose.model<Student>('Student', studentSchema)
+export const Student = mongoose.model<IStudent>('Student', studentSchema)
