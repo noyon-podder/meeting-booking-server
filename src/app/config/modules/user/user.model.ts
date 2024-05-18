@@ -59,7 +59,8 @@ const studentSchema = new mongoose.Schema<IStudent>(
     contactNo: { type: String, required: true },
     gender: {
       type: String,
-      enum: ['male', 'female'],
+      enum: ['male', 'female', 'other'],
+      required: true,
     },
     bloodGroup: {
       type: String,
@@ -73,8 +74,14 @@ const studentSchema = new mongoose.Schema<IStudent>(
     },
     presentAddress: { type: String, required: true },
     permanentAddress: { type: String, required: true },
-    localGuardian: localGuardianSchema,
-    guardian: guardianSchema,
+    localGuardian: {
+      type: localGuardianSchema,
+      required: true,
+    },
+    guardian: {
+      type: guardianSchema,
+      required: true,
+    },
     profileImage: { type: String },
     isActive: {
       type: String,
