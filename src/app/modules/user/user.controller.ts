@@ -1,11 +1,11 @@
 import { Request, Response } from 'express'
 import { UserService } from './user.service'
 
-// create student
-const createStudent = async (req: Request, res: Response) => {
+// create a user
+const createUser = async (req: Request, res: Response) => {
   const data = req.body
 
-  const result = await UserService.createStudentIntoDB(data)
+  const result = await UserService.createUserIntoDB(data)
 
   res.status(200).json({
     success: true,
@@ -37,8 +37,8 @@ const getSingleStudent = async (req: Request, res: Response) => {
     data: result,
   })
 }
-export const UserController = {
-  createStudent,
+export const UserControllers = {
+  createUser,
   getAllStudents,
   getSingleStudent,
 }
