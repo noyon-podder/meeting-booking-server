@@ -14,7 +14,11 @@ const getAllUsersFromDB = async () => {
 }
 
 const getSingleUserFromDB = async (id: string) => {
-  const result = await User.find({ id })
+  const result = await User.findOne({ _id: id })
+
+  if (!result) {
+    throw new Error('User Not Found')
+  }
 
   return result
 }

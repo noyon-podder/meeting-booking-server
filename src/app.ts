@@ -1,6 +1,7 @@
 import express, { Response, Request, Application } from 'express'
 import cors from 'cors'
 import MainRouter from './app/routes'
+import globalErrorHandler from './app/middleware/globalErrorHandler'
 
 const app: Application = express()
 
@@ -17,4 +18,7 @@ app.get('/', (req: Request, res: Response) => {
     message: 'Hello Developer!!',
   })
 })
+
+// global error handler
+app.use(globalErrorHandler)
 export default app
