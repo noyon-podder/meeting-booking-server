@@ -5,4 +5,5 @@ export type TUser = {
   phone: number
   address: string
   role: 'user' | 'admin'
+  isDeleted: boolean
 }

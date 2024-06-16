@@ -29,8 +29,21 @@ const userSchema = new Schema<TUser>(
       enum: ['user', 'admin'],
       default: 'user',
     },
+    isDeleted: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true },
 )
+
+// Pre middleware to exclude documents where isDeleted is true
+userSchema.pre('find', function () {
+  this.where({ isDeleted: { $ne: true } })
+})
+
+userSchema.pre('findOne', function () {
+  this.where({ isDeleted: { $ne: true } })
+})
 
 export const User = model<TUser>('User', userSchema)

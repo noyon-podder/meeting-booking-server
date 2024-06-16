@@ -18,30 +18,45 @@ const createUser = catchAsync(async (req, res) => {
 })
 
 // get all students
-const getAllStudents = async (req: Request, res: Response) => {
-  const result = await UserService.getAllStudents()
+const getAllUsers = catchAsync(async (req, res) => {
+  const result = await UserService.getAllUsersFromDB()
 
-  res.status(200).json({
+  sendResponse(res, {
+    statusCode: 200,
     success: true,
-    message: 'Student Create Successfully',
+    message: 'All User retrieve Successfully',
     data: result,
   })
-}
+})
 
 // get single student
 
-const getSingleStudent = async (req: Request, res: Response) => {
+const getSingleUser = catchAsync(async (req: Request, res: Response) => {
   const id = req.params.id
-  const result = await UserService.getSingleStudent(id)
+  const result = await UserService.getSingleUserFromDB(id)
 
-  res.status(200).json({
+  sendResponse(res, {
+    statusCode: 200,
     success: true,
-    message: 'Student Create Successfully',
+    message: 'Single User retrieve Successfully',
     data: result,
   })
-}
+})
+
+const userDelete = catchAsync(async (req: Request, res: Response) => {
+  const { id } = req.params
+
+  const result = await UserService.userDeleteFromDB(id)
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: 'User Delete Successfully',
+    data: result,
+  })
+})
 export const UserControllers = {
   createUser,
-  getAllStudents,
-  getSingleStudent,
+  getAllUsers,
+  getSingleUser,
+  userDelete,
 }

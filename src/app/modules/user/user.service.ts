@@ -7,20 +7,33 @@ const createUserIntoDB = async (student: TUser) => {
   return result
 }
 
-const getAllStudents = async () => {
+const getAllUsersFromDB = async () => {
   const result = await User.find({})
 
   return result
 }
 
-const getSingleStudent = async (id: string) => {
+const getSingleUserFromDB = async (id: string) => {
   const result = await User.find({ id })
+
+  return result
+}
+
+// single user soft delete from db
+
+const userDeleteFromDB = async (id: string) => {
+  const result = await User.findOneAndUpdate(
+    { _id: id },
+    { isDeleted: true },
+    { new: true },
+  )
 
   return result
 }
 
 export const UserService = {
   createUserIntoDB,
-  getAllStudents,
-  getSingleStudent,
+  getAllUsersFromDB,
+  getSingleUserFromDB,
+  userDeleteFromDB,
 }

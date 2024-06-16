@@ -11,4 +11,9 @@ router.post(
   UserControllers.createUser,
 )
 
+router.get('/users', UserControllers.getAllUsers)
+
+router.get('/:id', UserControllers.getSingleUser)
+
+router.delete('/:id', UserControllers.userDelete)
 export const UserRoutes = router
