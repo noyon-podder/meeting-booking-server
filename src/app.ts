@@ -9,7 +9,7 @@ app.use(express.json())
 app.use(cors())
 
 // router
-app.use('/api/v1/student', UserRoutes)
+app.use('/api/auth', UserRoutes)
 
 // check routing
 app.get('/', (req: Request, res: Response) => {
