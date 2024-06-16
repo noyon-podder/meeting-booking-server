@@ -1,3 +1,4 @@
+import AppError from '../../errors/AppError'
 import { TUser } from './user.interface'
 import { User } from './user.model'
 
@@ -17,7 +18,7 @@ const getSingleUserFromDB = async (id: string) => {
   const result = await User.findOne({ _id: id })
 
   if (!result) {
-    throw new Error('User Not Found')
+    throw new AppError(404, 'User Not Found')
   }
 
   return result
