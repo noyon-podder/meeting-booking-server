@@ -23,12 +23,13 @@ const loginUser = catchAsync(async (req, res) => {
   sendResponse(res, {
     statusCode: 200,
     success: true,
-    message: 'User Login Successfully',
-    data: result,
+    message: 'User logged in successfully',
+    token: result.token,
+    data: result.user,
   })
 })
 
 export const AuthControllers = {
   createUser,
-  loginUser
+  loginUser,
 }

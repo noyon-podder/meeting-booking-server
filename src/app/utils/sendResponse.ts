@@ -3,18 +3,23 @@ import { Response } from 'express'
 
 type TSendResponse = {
   statusCode: number
-  data: any
   message: string
   success: boolean
+  token?: string
+  data: any
 }
 
 const sendResponse = (res: Response, data: TSendResponse) => {
-  return res.status(data.statusCode).json({
+  const responseObject: TSendResponse = {
     statusCode: data.statusCode,
     success: data.success,
     message: data.message,
     data: data.data,
-  })
+  }
+  if (data.token) {
+    responseObject.token = data.token
+  }
+  return res.status(data.statusCode).json(responseObject)
 }
 
 export default sendResponse
