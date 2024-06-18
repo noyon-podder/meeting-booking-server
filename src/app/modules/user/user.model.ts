@@ -15,6 +15,7 @@ const userSchema = new Schema<TUser>(
     password: {
       type: String,
       required: true,
+      select: 0,
     },
     phone: {
       type: Number,
@@ -34,7 +35,16 @@ const userSchema = new Schema<TUser>(
       default: false,
     },
   },
-  { timestamps: true },
+  {
+    timestamps: true,
+    toJSON: {
+      transform: (doc, ret) => {
+        delete ret.password
+        delete ret.isDeleted
+        return ret
+      },
+    },
+  },
 )
 
 // Pre middleware to exclude documents where isDeleted is true
