@@ -3,20 +3,6 @@ import { UserService } from './user.service'
 import catchAsync from '../../utils/catchAsync'
 import sendResponse from '../../utils/sendResponse'
 
-// create a user
-const createUser = catchAsync(async (req, res) => {
-  const data = req.body
-
-  const result = await UserService.createUserIntoDB(data)
-
-  sendResponse(res, {
-    statusCode: 200,
-    success: true,
-    message: 'User Create Successfully',
-    data: result,
-  })
-})
-
 // get all students
 const getAllUsers = catchAsync(async (req, res) => {
   const result = await UserService.getAllUsersFromDB()
@@ -55,7 +41,6 @@ const userDelete = catchAsync(async (req: Request, res: Response) => {
   })
 })
 export const UserControllers = {
-  createUser,
   getAllUsers,
   getSingleUser,
   userDelete,
