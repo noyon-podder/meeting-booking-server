@@ -10,6 +10,10 @@ const roomSchema = new Schema<TRoom>({
     type: Number,
     required: true,
   },
+  floorNo: {
+    type: Number,
+    required: true,
+  },
   capacity: {
     type: Number,
     required: true,
