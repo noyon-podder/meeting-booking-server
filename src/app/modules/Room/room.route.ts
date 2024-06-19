@@ -7,7 +7,7 @@ const router = Router()
 
 router.post(
   '/',
-  validateRequest(RoomValidations.roomValidationSchema),
+  validateRequest(RoomValidations.createRoomValidationSchema),
   RoomControllers.createRoom,
 )
 
@@ -15,6 +15,10 @@ router.get('/', RoomControllers.getAllRooms)
 router.get('/:id', RoomControllers.getSingleRoom)
 router.delete('/:id', RoomControllers.roomDelete)
 
-router.put('/:id', RoomControllers.roomUpdate)
+router.put(
+  '/:id',
+  validateRequest(RoomValidations.updateRoomValidationSchema),
+  RoomControllers.roomUpdate,
+)
 
 export const RoomRoutes = router
