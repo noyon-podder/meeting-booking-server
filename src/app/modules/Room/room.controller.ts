@@ -38,7 +38,7 @@ const getSingleRoom = catchAsync(async (req: Request, res: Response) => {
   })
 })
 
-// user delete
+// ROOM delete
 const roomDelete = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params
 
@@ -51,9 +51,24 @@ const roomDelete = catchAsync(async (req: Request, res: Response) => {
   })
 })
 
+// ROOM UPDATE
+const roomUpdate = catchAsync(async (req: Request, res: Response) => {
+  const { id } = req.params
+  const roomUpdatedData = req.body
+
+  const result = await RoomServices.roomUpdateFromDB(id, roomUpdatedData)
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: 'Room Update Successfully',
+    data: result,
+  })
+})
+
 export const RoomControllers = {
   createRoom,
   getAllRooms,
   getSingleRoom,
   roomDelete,
+  roomUpdate,
 }

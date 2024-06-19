@@ -40,9 +40,19 @@ const roomDeleteFromDB = async (id: string) => {
   return result
 }
 
+// room update from db
+const roomUpdateFromDB = async (id: string, payload: Partial<TRoom>) => {
+  const result = await Room.findOneAndUpdate({ _id: id }, payload, {
+    new: true,
+  })
+
+  return result
+}
+
 export const RoomServices = {
   createRoomIntoDB,
   getAllRoomsFromDB,
   getSingleRoomsFromDB,
   roomDeleteFromDB,
+  roomUpdateFromDB,
 }
