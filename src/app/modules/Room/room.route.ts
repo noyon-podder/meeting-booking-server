@@ -9,16 +9,18 @@ const router = Router()
 
 router.post(
   '/',
+  auth(USER_ROLE.admin),
   validateRequest(RoomValidations.createRoomValidationSchema),
   RoomControllers.createRoom,
 )
 
-router.get('/', auth(USER_ROLE.admin), RoomControllers.getAllRooms)
+router.get('/', RoomControllers.getAllRooms)
 router.get('/:id', RoomControllers.getSingleRoom)
 router.delete('/:id', RoomControllers.roomDelete)
 
 router.put(
   '/:id',
+  auth(USER_ROLE.admin),
   validateRequest(RoomValidations.updateRoomValidationSchema),
   RoomControllers.roomUpdate,
 )
