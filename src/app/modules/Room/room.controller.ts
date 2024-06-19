@@ -1,8 +1,10 @@
+import { Request, Response } from 'express'
 import catchAsync from '../../utils/catchAsync'
 import sendResponse from '../../utils/sendResponse'
 import { RoomServices } from './room.service'
 
-const createRoom = catchAsync(async (req, res) => {
+// create a room
+const createRoom = catchAsync(async (req: Request, res: Response) => {
   const result = await RoomServices.createRoomIntoDB(req.body)
   sendResponse(res, {
     statusCode: 200,
@@ -12,6 +14,46 @@ const createRoom = catchAsync(async (req, res) => {
   })
 })
 
+// get all rooms
+const getAllRooms = catchAsync(async (req: Request, res: Response) => {
+  const result = await RoomServices.getAllRoomsFromDB()
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: 'All Room Retrieve Successfully',
+    data: result,
+  })
+})
+
+// get all rooms
+const getSingleRoom = catchAsync(async (req: Request, res: Response) => {
+  const id = req.params.id
+  const result = await RoomServices.getSingleRoomsFromDB(id)
+
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: 'Single Room retrieve Successfully',
+    data: result,
+  })
+})
+
+// user delete
+const roomDelete = catchAsync(async (req: Request, res: Response) => {
+  const { id } = req.params
+
+  const result = await RoomServices.roomDeleteFromDB(id)
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: 'Room Delete Successfully',
+    data: result,
+  })
+})
+
 export const RoomControllers = {
   createRoom,
+  getAllRooms,
+  getSingleRoom,
+  roomDelete,
 }

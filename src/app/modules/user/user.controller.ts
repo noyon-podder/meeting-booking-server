@@ -16,7 +16,6 @@ const getAllUsers = catchAsync(async (req, res) => {
 })
 
 // get single student
-
 const getSingleUser = catchAsync(async (req: Request, res: Response) => {
   const id = req.params.id
   const result = await UserService.getSingleUserFromDB(id)
@@ -29,6 +28,7 @@ const getSingleUser = catchAsync(async (req: Request, res: Response) => {
   })
 })
 
+// user delete
 const userDelete = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params
 
