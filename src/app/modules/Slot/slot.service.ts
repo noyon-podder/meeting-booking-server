@@ -1,3 +1,4 @@
+import { Types } from 'mongoose'
 import { TSlot } from './slot.interface'
 import { Slot } from './slot.model'
 
@@ -43,6 +44,25 @@ const createSlotIntoDB = async (payload: TSlot) => {
   return result
 }
 
+const getAllAvailableSlotsFromDB = async (query: Record<string, unknown>) => {
+  const { date, roomId } = query
+
+  let findQuery: Partial<TSlot> = { isBooked: false }
+
+  if (date) {
+    findQuery = { ...findQuery, date: date as string }
+  }
+
+  if (roomId) {
+    findQuery = { ...findQuery, room: roomId as Types.ObjectId }
+  }
+
+  const result = await Slot.find(findQuery).populate('room').exec()
+
+  return result
+}
+
 export const SlotServices = {
   createSlotIntoDB,
+  getAllAvailableSlotsFromDB,
 }

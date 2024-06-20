@@ -16,7 +16,7 @@ router.post(
 
 router.get('/', RoomControllers.getAllRooms)
 router.get('/:id', RoomControllers.getSingleRoom)
-router.delete('/:id', RoomControllers.roomDelete)
+router.delete('/:id', auth(USER_ROLE.admin), RoomControllers.roomDelete)
 
 router.put(
   '/:id',
