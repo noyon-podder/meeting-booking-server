@@ -5,4 +5,7 @@ export type TBooking = {
   slots: [Types.ObjectId]
   room: Types.ObjectId
   user: Types.ObjectId
+  isConfirmed: 'confirmed' | 'unconfirmed'
+  totalAmount: number
+  isDeleted: boolean
 }

@@ -9,6 +9,7 @@ const bookingSchema = new Schema<TBooking>(
     },
     slots: {
       type: [Schema.Types.ObjectId],
+      ref: 'Slot',
       required: true,
     },
     room: {
@@ -20,6 +21,20 @@ const bookingSchema = new Schema<TBooking>(
       type: Schema.Types.ObjectId,
       ref: 'User',
       required: true,
+    },
+    totalAmount: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
+    isConfirmed: {
+      type: String,
+      enum: ['confirmed', 'unconfirmed'],
+      default: 'unconfirmed',
+    },
+    isDeleted: {
+      type: Boolean,
+      default: false,
     },
   },
   { timestamps: true },
