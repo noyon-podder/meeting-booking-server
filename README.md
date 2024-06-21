@@ -4,7 +4,7 @@
 
 # API Documentation
 
-### Base URL : `https://meeting-booking-server.vercel.app`
+### Base URL : https://meeting-booking-server.vercel.app
 
 ## Authentication
 
