@@ -8,12 +8,27 @@ import { BookingValidation } from './booking.validation'
 const router = Router()
 
 router.post(
-  '/',
+  '/bookings',
   auth(USER_ROLE.user, USER_ROLE.admin),
   validateRequest(BookingValidation.createBookingValidationSchema),
   BookingControllers.createBooking,
 )
 
-router.get('/', auth(USER_ROLE.admin), BookingControllers.getAllBookings)
+router.get(
+  '/bookings',
+  auth(USER_ROLE.admin),
+  BookingControllers.getAllBookings,
+)
 
+router.get(
+  '/my-bookings',
+  auth(USER_ROLE.user, USER_ROLE.admin),
+  BookingControllers.getMyBookings,
+)
+
+router.put(
+  '/bookings/:id',
+  auth(USER_ROLE.admin),
+  BookingControllers.updateBooking,
+)
 export const BookingRoutes = router

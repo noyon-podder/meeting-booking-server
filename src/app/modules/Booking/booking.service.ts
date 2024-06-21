@@ -1,3 +1,4 @@
+import { JwtPayload } from 'jsonwebtoken'
 import AppError from '../../errors/AppError'
 import { Room } from '../Room/room.model'
 import { Slot } from '../Slot/slot.model'
@@ -71,7 +72,34 @@ const getAllBookingsFromDB = async () => {
   return result
 }
 
+const getMyBookingsFromDB = async (payload: JwtPayload) => {
+  const booking = await Booking.find({ user: payload.userId })
+    .populate('slots')
+    .populate('room')
+
+  if (!booking) {
+    throw new AppError(404, 'Booking not found')
+  }
+
+  return booking
+}
+
+// booking update by specific id
+const updateBookingFromDB = async (
+  bookingId: string,
+  payload: Partial<TBooking>,
+) => {
+  const result = await Booking.findOneAndUpdate({ _id: bookingId }, payload, {
+    new: true,
+    runValidators: true,
+  })
+
+  return result
+}
+
 export const BookingServices = {
   createBookingIntoDB,
   getAllBookingsFromDB,
+  getMyBookingsFromDB,
+  updateBookingFromDB,
 }

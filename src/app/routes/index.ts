@@ -12,7 +12,7 @@ const moduleRoutes = [
   { path: '/user', routes: UserRoutes },
   { path: '/rooms', routes: RoomRoutes },
   { path: '/slots', routes: SlotRoutes },
-  { path: '/bookings', routes: BookingRoutes },
+  { path: '/', routes: BookingRoutes },
 ]
 
 moduleRoutes.forEach((route) => MainRouter.use(route.path, route.routes))
