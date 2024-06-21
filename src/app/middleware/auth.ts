@@ -34,7 +34,7 @@ const auth = (...authorizedRole: TUserRole[]) => {
 
     // check the user role and permission route
     if (authorizedRole && !authorizedRole.includes(role)) {
-      throw new AppError(403, 'User is not authorized')
+      throw new AppError(401, 'You have no access to this route')
     }
 
     // save the user in req.user

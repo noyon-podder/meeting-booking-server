@@ -97,9 +97,21 @@ const updateBookingFromDB = async (
   return result
 }
 
+// booking soft delete
+const bookingDeleteFromDB = async (bookingId: string) => {
+  const result = await Booking.findOneAndUpdate(
+    { _id: bookingId },
+    { isDeleted: true },
+    { new: true },
+  )
+
+  return result
+}
+
 export const BookingServices = {
   createBookingIntoDB,
   getAllBookingsFromDB,
   getMyBookingsFromDB,
   updateBookingFromDB,
+  bookingDeleteFromDB,
 }
