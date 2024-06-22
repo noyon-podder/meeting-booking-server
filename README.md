@@ -14,6 +14,7 @@
 - **Method**: `POST`
 - **Access**: `Public`
 - **Request Body**:
+
   ```json
   {
     "name": "Programming Hero",
@@ -31,6 +32,7 @@
 - **Method**: `POST`
 - **Access**: `Public`
 - **Request Body**:
+
   ```json
   {
     "email": "web@programming-hero.com",
@@ -48,9 +50,11 @@
 - **Method**: `POST`
 - **Access**: `Admin`
 - **Headers**:
+
   ```text
   Authorization: Bearer <Admin Token>
   ```
+
 - **Request Body**:
   ```json
   {
@@ -68,6 +72,7 @@
 - **URL**: `/api/rooms/:id`
 - **Method**: `GET`
 - **URL Like**:
+
   ```text
   /api/rooms/66696895f953a56fe37fc9f3
   ```
