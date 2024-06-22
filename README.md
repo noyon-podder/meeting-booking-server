@@ -34,9 +34,16 @@
 - **Request Body**:
 
   ```json
+  // Admin Login Credential
   {
-    "email": "web@programming-hero.com",
-    "password": "ph-password"
+    "email": "admin@gmail.com",
+    "password": "admin"
+  }
+
+  // User Login Credential
+  {
+    "email": "user@gmail.com",
+    "password": "user"
   }
   ```
 
