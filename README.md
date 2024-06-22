@@ -83,9 +83,11 @@
 - **Method**: `PUT`
 - **Access**: `Admin`
 - **Headers**:
+
   ```text
   Authorization: Bearer <Admin Token>
   ```
+
 - **URL Like**:
   ```text
   /api/rooms/666968573b37b1d14879b04e
@@ -103,9 +105,11 @@
 - **Method**: `DELETE`
 - **Access**: `Admin`
 - **Headers**:
+
   ```text
   Authorization: Bearer <Admin Token>
   ```
+
 - **URL Like**:
   ```text
   /api/rooms/666968573b37b1d14879b04e
@@ -121,9 +125,11 @@
 - **Method**: `POST`
 - **Access**: `Admin`
 - **Headers**:
+
   ```text
   Authorization: Bearer <Admin Token>
   ```
+
 - **Request Body**:
   ```json
   {
@@ -140,10 +146,12 @@
 - **Method**: `GET`
 - **Access**: `Public`
 - **Query Parameters**:
+
   ```text
   date: 2024-08-15
   roomId: 6669ab8e0ec5628524c2035d
   ```
+
 - **URL Like**:
   ```text
   /api/slots/availability?date=2024-08-15&roomId=6669ab8e0ec5628524c2035d
@@ -161,9 +169,11 @@
 - **Method**: `POST`
 - **Access**: `User`
 - **Headers**:
+
   ```text
   Authorization: Bearer <User Token>
   ```
+
 - **Request Body**:
   ```json
   {
@@ -180,6 +190,7 @@
 - **Method**: `GET`
 - **Access**: `Admin`
 - **Headers**:
+
   ```text
   Authorization: Bearer <Admin Token>
   ```
@@ -190,6 +201,7 @@
 - **Method**: `GET`
 - **Access**: `User`
 - **Headers**:
+
   ```text
   Authorization: Bearer <token>
   ```
@@ -200,9 +212,11 @@
 - **Method**: `PUT`
 - **Access**: `Admin`
 - **Headers**:
+
   ```text
   Authorization: Bearer <Admin Token>
   ```
+
 - **URL Like**:
   ```text
   /api/bookings/666a832c3ad0e42edec5d5c6
@@ -220,9 +234,11 @@
 - **Method**: `DELETE`
 - **Access**: `Admin`
 - **Headers**:
+
   ```text
   Authorization: Bearer <Admin Token>
   ```
+
 - **URL Like**:
   ```text
   /api/bookings/666a832c3ad0e42edec5d5c6
