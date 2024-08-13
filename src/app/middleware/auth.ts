@@ -15,6 +15,11 @@ const auth = (...authorizedRole: TUserRole[]) => {
     }
 
     const token = authHeader.split(' ')[1]
+
+    // bearer not send send to error
+    if (!token) {
+      throw new AppError(401, 'Token With Bearer is missing')
+    }
     // checking token validity
     const decoded = jwt.verify(token, config.jwt_secret as string) as JwtPayload
 

@@ -1,9 +1,17 @@
 import { Types } from 'mongoose'
 import { TSlot } from './slot.interface'
 import { Slot } from './slot.model'
+import AppError from '../../errors/AppError'
+import { Room } from '../Room/room.model'
 
 const createSlotIntoDB = async (payload: TSlot) => {
   const { room, date, startTime, endTime } = payload
+
+  const isRoomAvailable = await Room.findOne({ _id: room })
+
+  if (!isRoomAvailable) {
+    throw new AppError(404, 'Room Not Found')
+  }
 
   const slotDuration = 60
 
